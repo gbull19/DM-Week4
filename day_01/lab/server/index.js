@@ -1,21 +1,20 @@
 const express = require('express');
-const server = express();
-const PORT = 3000
+const cors = require("cors");
+const app = express();
+app.use(cors());
+const PORT = 4000
 
-server.use(express.json());
-
-server.get("/", (req, res) => {
-    console.log(req.query);
-    res.send("hello");
+app.get("/api/users", (req, res) => {
+    let friends = ["Nitin", "Eric", "Jeddy", "Cameron", "Riley"];
+    res.status(200).send(friends);
 });
 
-server.get('/:wildcard', function (req, res) {
-    console.log(req.params);
-    console.log(req.query);
-    console.log(req.body);
-    res.send("Hello World");
-})
+app.get("/weather/:temperature", (req, res) => {
+    const { temperature } = req.params;
+    const phrase = `<h3>It was ${temperature} today.</h3>`;
+    res.status(200).send(phrase);
+});
 
-server.listen(PORT, () => {
-    console.log(`Running in the 90's but on port ${PORT}.`)
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}.`)
 });

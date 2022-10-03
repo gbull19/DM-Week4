@@ -11,7 +11,7 @@ app.get("/api/users", (req, res) => {
 
 app.get("/weather/:temperature", (req, res) => {
     const { temperature } = req.params;
-    const phrase = `<h3>It was ${temperature} today.</h3>`;
+    const phrase = `<h1>It was ${temperature} today.</h1>`;
     res.status(200).send(phrase);
 });
 

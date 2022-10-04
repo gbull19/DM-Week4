@@ -20,7 +20,7 @@ server.get("/api/sets", (req, res) => {
 });
 
 server.post("/api/sets", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const set_to_add = {
         id: req.body.id,
         set_name: req.body.set_name

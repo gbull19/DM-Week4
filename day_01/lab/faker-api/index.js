@@ -2,7 +2,6 @@ import { faker } from '@faker-js/faker';
 import express from 'express';
 
 const server = express();
-server.use(express.json());
 const PORT = 3000
 
 server.get("/", (req, res) => {
@@ -12,14 +11,16 @@ server.get("/", (req, res) => {
 
 class User{
     constructor() {
-        this._id= faker.datatype.uuid(),
-        this.firstName= faker.name.firstName()
+        this._id = faker.datatype.uuid(),
+        this.firstName = faker.name.firstName(),
+        this.lastName = faker.name.lastName(),
+        this.phoneNumber = faker.phone.phoneNumber(),
+        this.password = faker.internet.password()
     }
 }
 
 server.get("/api/users/new", (req, res) => {
-    let newUser = new User();
-    res.status(200).send({newUser});
+    res.status(200).send(new User());
 });
 
 server.get("/api/companies/new", (req, res) => {

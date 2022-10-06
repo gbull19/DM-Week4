@@ -1,23 +1,36 @@
 const resBtn = document.querySelector(".resBtn");
 
-const update = () => {
+const updateRes = () => {
     axios.get("https://swapi.dev/api/planets/2")
     .then((res) => {
+        console.log(res.data)
         let arr = res.data.residents;
         for (resident of arr) {
             axios.get(resident)
             .then((res) => {
                 let { name, height, eye_color, birth_year, gender } = res.data;
-                document.querySelector(".display").innerHTML += `<br>Name: ${name}<br>Height: ${height}cm<br>Eye Color: ${eye_color}<br>Birth Year: ${birth_year}<br>Gender: ${gender}<br>`;
+                document.querySelector(".resDisplay").innerHTML += `<br>Name: ${name}<br>Height: ${height}cm<br>Eye Color: ${eye_color}<br>Birth Year: ${birth_year}<br>Gender: ${gender}<br>`;
             });
         };
     })
     .catch(err => console.log(err));
 };
 
-resBtn.addEventListener("click", update);
+resBtn.addEventListener("click", updateRes);
 
+const planetBtn = document.querySelector(".planetBtn");
 
+const updatePlanet = () => {
+    axios.get("https://swapi.dev/api/planets/2")
+    .then((res) => {
+        // console.log(res.data)
+        let { name, climate, diameter, gravity, orbital_period, rotational_period, surface_water, terrain } = res.data;
+        document.querySelector(".planetDisplay").innerHTML += `<br>Name: ${name}<br>Climate: ${climate}<br>Surface Water: ${surface_water}%<br>Terrain: ${terrain}<br>Diameter: ${diameter}km<br>Gravity: ${gravity}<br>Orbital Period: ${orbital_period} days<br>Rotational Period: ${rotational_period}<br>`;
+    })
+    .catch(err => console.log(err));
+};
+
+planetBtn.addEventListener("click", updatePlanet);
 
 
 

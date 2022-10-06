@@ -1,0 +1,41 @@
+* {
+    background-color: black;
+    background-image: url("https://github.com/gbull19/hosting/blob/main/stars.png?raw=true");
+}
+
+header {
+background-image: url("https://github.com/gbull19/hosting/blob/main/Star%20Wars%20Logo.jpg?raw=true");
+background-repeat: no-repeat;
+background-position: center;
+border: 2px, solid, whitesmoke;
+height: 400px;
+width: 100%;
+}
+
+.resBtn {
+    background-color: yellow;
+    border: 10px, solid, whitesmoke;
+}
+
+.planetBtn {
+    background-color: yellow;
+    border: 10px, solid, whitesmoke;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.resDisplay {
+    background-color: yellow;
+    height: auto;
+    border: 10px, solid, whitesmoke;
+}
+
+.planetDisplay {
+    background-color: yellow;
+    height: auto;
+    border: 10px, solid, whitesmoke;
+}

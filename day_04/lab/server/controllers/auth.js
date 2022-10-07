@@ -4,10 +4,10 @@ const users = []
 module.exports = {
     login: (req, res) => {
       console.log('Logging In User')
-      console.log(req.body);
+      // console.log(req.body);
       const { username, password } = req.body;
-      const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-      console.log(hashPassword);
+      const hashPassword = bcrypt.compareSync(password, bcrypt.genSaltSync(10));
+      // console.log(hashPassword);
       for (let i = 0; i < users.length; i++) {
         if (users[i].username == username && users[i].password == hashPassword) {
           res.status(200).send(users[i]);
